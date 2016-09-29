@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-analytics/google-analytics.html">
+<link rel="import" href="des-env.html">
+
+<dom-module id="des-shell">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <google-analytics key="[[_googleAnalyticsKey]]"></google-analytics>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'des-shell',
+      properties: {
+        _googleAnalyticsKey: {
+          type: String,
+          value: function() { return window.GOOGLE_ANALYTICS_KEY; }
+        }
+      }
+    });
+  </script>
+</dom-module>

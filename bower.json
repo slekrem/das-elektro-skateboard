@@ -1,0 +1,14 @@
+{
+  "name": "das-elektro-skateboard.de",
+  "authors": [
+    "Stefan Merkel"
+  ],
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.6.0",
+    "google-analytics": "stefanmerkel/google-analytics"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/des-shell/des-shell.html",
+  "fragments": [
+    "src/des-shell/des-env.html"
+  ],
+  "sourceGlobs": [
+   "src/**/*",
+   "images/**/*",
+   "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}
