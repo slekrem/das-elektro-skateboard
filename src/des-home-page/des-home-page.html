@@ -1,0 +1,110 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/google-feeds/google-feeds.html">
+<link rel="import" href="../des-icons/des-icons.html">
+
+<dom-module id="des-home-page">
+  <template>
+    <style include="app-grid-style">
+      :host {
+        display: block;
+
+        --app-grid-columns: 3;
+        --app-grid-gutter: 5px;
+        --app-grid-item-height: 250px;
+        --app-grid-expandible-item-columns: 4;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      paper-card {
+        width: 100%;
+        height: 250px;
+
+        --paper-card-header-text: {
+          font-size: 18px;
+        };
+      }
+    </style>
+    <!-- data -->
+    <!-- Google Alert - elektro skateboard -->
+    <google-feeds feed="https://www.google.com/alerts/feeds/04412435237654866870/9110502525763911842"
+      results="{{_elektroSkateboardResult}}"></google-feeds>
+    <!-- Google Alert – longboard -->
+    <google-feeds feed="https://www.google.de/alerts/feeds/04412435237654866870/5385553535916750779"
+      results="{{_longboardResult}}"></google-feeds>
+    <!-- Google Alert – elektroroller -->
+    <google-feeds feed="https://www.google.de/alerts/feeds/04412435237654866870/3289640072419991976"
+      results="{{_elektrorollerResult}}"></google-feeds>
+
+    <ul class="app-grid">
+      <template is="dom-repeat" items="[[_elektroSkateboardResult.entries]]">
+        <li>
+          <paper-card
+            heading="[[item.title]]">
+            <div class="card-content">
+              [[item.contentSnippet]]
+            </div>
+            <div class="card-actions">
+              <a href="[[_computeLink(item.link)]]" target="_blank" tabindex="-1">
+                <paper-icon-button icon="launch"></paper-icon-button>
+              </a>
+            </div>
+          </paper-card>
+        </li>
+      </template>
+      <template is="dom-repeat" items="[[_longboardResult.entries]]">
+        <li>
+          <paper-card
+            heading="[[item.title]]">
+            <div class="card-content">
+              [[item.contentSnippet]]
+            </div>
+            <div class="card-actions">
+              <a href="[[_computeLink(item.link)]]" target="_blank" tabindex="-1">
+                <paper-icon-button icon="launch"></paper-icon-button>
+              </a>
+            </div>
+          </paper-card>
+        </li>
+      </template>
+      <template is="dom-repeat" items="[[_elektrorollerResult.entries]]">
+        <li>
+          <paper-card
+            heading="[[item.title]]">
+            <div class="card-content">
+              [[item.contentSnippet]]
+            </div>
+            <div class="card-actions">
+              <a href="[[_computeLink(item.link)]]" target="_blank" tabindex="-1">
+                <paper-icon-button icon="launch"></paper-icon-button>
+              </a>
+            </div>
+          </paper-card>
+        </li>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer({
+      is: "des-home-page",
+
+      _computeLink: function(link) {
+        if (link) {
+          link = link.replace("https://www.google.com/url?rct=j&sa=t&url=", "")
+        }
+        return link;
+      }
+    });
+  </script>
+</dom-module>

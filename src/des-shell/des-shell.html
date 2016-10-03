@@ -1,5 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/google-analytics/google-analytics.html">
+<link rel="import" href="../main-page/main-page.html">
+<link rel="import" href="../main-page/page-body.html">
+<link rel="import" href="../main-page/page-level.html">
+<link rel="import" href="../main-page/page-header.html">
+<link rel="import" href="../des-home-page/des-home-page.html">
+
 <link rel="import" href="des-env.html">
 
 <dom-module id="des-shell">
@@ -9,7 +15,18 @@
         display: block;
       }
     </style>
-    <google-analytics key="[[_googleAnalyticsKey]]"></google-analytics>
+    <google-analytics key="UA-11698599-3"></google-analytics>
+
+    <main-page
+      route="{{_route}}">
+      <page-body>
+        <page-level
+          route="[[_route]]"
+          url="/">
+          <des-home-page class="page-content"></des-home-page>
+        </page-level>
+      </page-body>
+    </main-page>
   </template>
 
   <script>
@@ -19,6 +36,9 @@
         _googleAnalyticsKey: {
           type: String,
           value: function() { return window.GOOGLE_ANALYTICS_KEY; }
+        },
+        _route: {
+          type: Object
         }
       }
     });

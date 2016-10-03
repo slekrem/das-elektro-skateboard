@@ -2,7 +2,13 @@
   "entrypoint": "index.html",
   "shell": "src/des-shell/des-shell.html",
   "fragments": [
-    "src/des-shell/des-env.html"
+    "src/des-home-page/des-home-page.html",
+    "src/des-icons/des-icons.html",
+    "src/des-shell/des-env.html",
+    "src/main-page/main-page.html",
+    "src/main-page/page-body.html",
+    "src/main-page/page-header.html",
+    "src/main-page/page-level.html"
   ],
   "sourceGlobs": [
    "src/**/*",

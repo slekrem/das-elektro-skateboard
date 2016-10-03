@@ -1,0 +1,72 @@
+<link rel="import"
+  href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="page-body">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .content-wrapper {
+          margin: auto;
+      }
+
+      @media (max-width: 480px) {
+          .content-wrapper {
+              width: 100%;
+          }
+      }
+
+      @media (min-width: 480px) {
+          .content-wrapper {
+              width: 480px;
+          }
+      }
+
+      @media (min-width: 600px) {
+          .content-wrapper {
+              width: 600px;
+          }
+      }
+
+      @media (min-width: 840px) {
+          .content-wrapper {
+              width: 840px;
+          }
+      }
+
+      @media (min-width: 960px) {
+          .content-wrapper {
+              width: 960px;
+          }
+      }
+
+      @media (min-width: 1280px) {
+          .content-wrapper {
+              width: 1280px;
+          }
+      }
+
+      @media (min-width: 1440px) {
+          .content-wrapper {
+              width: 1440px;
+          }
+      }
+
+      @media (min-width: 1600px) {
+          .content-wrapper {
+              width: 1600px;
+          }
+      }
+    </style>
+    <div class="content-wrapper">
+      <content select="page-level"></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "page-body",
+    });
+  </script>
+</dom-module>

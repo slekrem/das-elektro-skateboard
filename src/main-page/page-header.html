@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<dom-module id="page-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      app-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+      }
+    </style>
+    <app-header fixed condenses>
+      <app-toolbar>
+        <div main-title>[[mainTitle]]</div>
+      </app-toolbar>
+      <app-toolbar sticky>
+        asd
+      </app-toolbar>
+    </app-header>
+    <!-- <content select="page-toolbar"></content> -->
+  </template>
+  <script>
+    Polymer({
+      is: "page-header",
+      properties: {
+        mainTitle: {
+          type: String
+        }
+      },
+      ready: function() {
+        console.log("ready");
+        console.log(Polymer.dom(this));
+
+
+        /*
+        var children = Polymer.dom(this).children;
+        for(var childIndex in children) {
+          var child = children[childIndex];
+          console.log(Polymer.dom(child));
+        }
+        */
+      },
+    });
+  </script>
+</dom-module>
