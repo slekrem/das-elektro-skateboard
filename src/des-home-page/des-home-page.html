@@ -35,6 +35,61 @@
           font-size: 18px;
         };
       }
+
+      .content-wrapper {
+        margin: auto;
+      }
+
+      @media (max-width: 480px) {
+        :host {
+          --app-grid-columns: 1;
+          --app-grid-gutter: 5px;
+          --app-grid-item-height: 250px;
+          --app-grid-expandible-item-columns: 1;
+        }
+      }
+
+      @media (min-width: 480px) {
+        :host {
+          --app-grid-columns: 2;
+          --app-grid-gutter: 5px;
+          --app-grid-item-height: 250px;
+          --app-grid-expandible-item-columns: 2;
+        }
+      }
+
+      @media (min-width: 600px) {
+        :host {
+          --app-grid-columns: 2;
+          --app-grid-gutter: 5px;
+          --app-grid-item-height: 250px;
+          --app-grid-expandible-item-columns: 2;
+        }
+      }
+
+      @media (min-width: 840px) {
+        :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter: 5px;
+          --app-grid-item-height: 250px;
+          --app-grid-expandible-item-columns: 3;
+        }
+      }
+
+      @media (min-width: 960px) {
+        :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter: 5px;
+          --app-grid-item-height: 250px;
+          --app-grid-expandible-item-columns: 3;
+        }
+      }
+
+      @media (min-width: 1280px) { }
+
+      @media (min-width: 1440px) { }
+
+      @media (min-width: 1600px) { }
     </style>
     <!-- data -->
     <!-- Google Alert - elektro skateboard -->
@@ -98,6 +153,17 @@
   <script>
     Polymer({
       is: "des-home-page",
+
+      attached: function() {
+        this._updateGridStyles = this._updateGridStyles || function() {
+          this.updateStyles();
+        }.bind(this);
+        window.addEventListener('resize', this._updateGridStyles);
+      },
+
+      detached: function() {
+        window.removeEventListener('resize', this._updateGridStyles);
+      },
 
       _computeLink: function(link) {
         if (link) {
