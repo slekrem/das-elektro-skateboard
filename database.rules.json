@@ -1,6 +1,7 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true"
+    "feed": {
+      ".read": "true"
+    }
   }
 }
