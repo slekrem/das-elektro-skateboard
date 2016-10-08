@@ -1,38 +1,48 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/google-analytics/google-analytics.html">
 <link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
-<link rel="import" href="../main-page/main-page.html">
-<link rel="import" href="../main-page/page-body.html">
-<link rel="import" href="../main-page/page-level.html">
-<link rel="import" href="../main-page/page-header.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../des-styles/des-styles.html">
 <link rel="import" href="../des-home-page/des-home-page.html">
+<link rel="import" href="../des-impressum-page/des-impressum-page.html">
+<link rel="import" href="../des-datenschutzerklaerung-page/des-datenschutzerklaerung-page.html">
 
 <link rel="import" href="des-env.html">
 
 <dom-module id="des-shell">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
+    <style include="des-styles"></style>
     <google-analytics key="UA-11698599-3"></google-analytics>
     <firebase-app
       auth-domain="das-elektro-skateboard.firebaseapp.com"
       database-url="https://das-elektro-skateboard.firebaseio.com"
       api-key="AIzaSyAW_BL-9_ScCQ1oZHu6ctiQKEJ2RtqlCPk"></firebase-app>
-    <main-page
-      route="{{_route}}">
-      <page-body>
-        <page-level
-          route="[[_route]]"
-          url="/">
-          <des-home-page class="page-content"></des-home-page>
-        </page-level>
-      </page-body>
-    </main-page>
+    <app-location
+      route="{{_route}}"></app-location>
+    <app-route
+      route="[[_route]]"
+      pattern="/:page"
+      data="{{_routeData}}"></app-route>
+    <div class="des-body">
+      <iron-pages
+        selected="[[_routeData.page]]"
+        attr-for-selected="name"
+        fallback-selection="home">
+        <des-home-page name="home"></des-home-page>
+        <des-impressum-page name="impressum"></des-impressum-page>
+        <des-datenschutzerklaerung-page name="datenschutzerklaerung"></des-datenschutzerklaerung-page>
+      </iron-pages>
+    </div>
+    <div class="des-footer">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutzerklaerung">Datenschutzerklärung</a></li>
+      </ul>
+    </div>
   </template>
-
   <script>
     Polymer({
       is: 'des-shell',
