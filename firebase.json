@@ -8,6 +8,14 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "sitemap.xml",
+        "destination": "/sitemap.html"
+      },
+      {
+        "source": "robots.txt",
+        "destination": "/robots.txt"
       }
     ]
   }

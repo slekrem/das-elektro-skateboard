@@ -3,8 +3,13 @@
 <link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/lazy-loading/lazy-loading.html">
@@ -22,6 +27,10 @@
 <dom-module id="des-shell">
   <template>
     <style include="des-styles">
+      .toolbar-items a[spacer] {
+        margin: 0 0 0 32px;
+      }
+
       .footer-content {
         @apply(--layout-horizontal);
         @apply(--layout-center-justified);
@@ -29,6 +38,24 @@
 
       .footer-content a {
         margin: 0 5px 0 5px;
+      }
+
+      @media (max-width: 840px) {
+        .toolbar-items {
+          display: none;
+        }
+        paper-icon-button[drawer-toggle] {
+          display: block;
+        }
+      }
+
+      @media (min-width: 840px) {
+        .toolbar-items {
+          display: block;
+        }
+        paper-icon-button[drawer-toggle] {
+          display: none;
+        }
       }
     </style>
     <google-analytics key="UA-11698599-3"></google-analytics>
@@ -42,43 +69,64 @@
       route="[[_route]]"
       pattern="/:page"
       data="{{_routeData}}"></app-route>
-    <div class="des-header">
-      <app-header>
-        <app-toolbar>
-          <div main-title>Das Elektro Skateboard</div>
-          <a href="/">Home</a>
-          <a href="/internet" spacer>Internet</a>
-          <a href="/hersteller" spacer>Hersteller</a>
-          <a href="/vergleiche" spacer>Vergleiche</a>
-        </app-toolbar>
-      </app-header>
-    </div>
-    <div class="des-body">
-      <iron-pages
-        selected="[[_routeData.page]]"
-        attr-for-selected="name"
-        fallback-selection="home">
-        <des-home-page name="home"></des-home-page>
-        <des-internet-page name="internet"></des-internet-page>
-        <des-hersteller-page name="hersteller"></des-hersteller-page>
-        <des-vergleiche-page name="vergleiche"></des-vergleiche-page>
-        <des-impressum-page name="impressum"></des-impressum-page>
-        <des-datenschutzerklaerung-page name="datenschutzerklaerung"></des-datenschutzerklaerung-page>
-        <des-tools-page name="tools"></des-tools-page>
-      </iron-pages>
-    </div>
-    <div class="des-footer">
-      <paper-card>
-        <div class="card-content">
-          <div class="footer-content">
-            Copyright © 2016 ·
-            <a href="/">das-elektro-skateboard.de</a> ·
-            <a href="/impressum">Impressum</a> ·
-            <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
-          </div>
+    <app-drawer-layout force-narrow>
+      <app-drawer id="drawer" swipe-open>
+        <paper-listbox>
+          <a href="/" tabindex="-1">
+            <paper-item>Home</paper-item>
+          </a>
+          <a href="/internet" tabindex="-1">
+            <paper-item>Internet</paper-item>
+          </a>
+          <a href="/hersteller" tabindex="-1">
+            <paper-item>Hersteller</paper-item>
+          </a>
+          <a href="/vergleiche" tabindex="-1">
+            <paper-item>Vergleiche</paper-item>
+          </a>
+        </paper-listbox>
+      </app-drawer>
+      <app-header-layout>
+        <app-header>
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div main-title>Das Elektro Skateboard</div>
+            <div class="toolbar-items">
+              <a href="/">Home</a>
+              <a href="/internet" spacer>Internet</a>
+              <a href="/hersteller" spacer>Hersteller</a>
+              <a href="/vergleiche" spacer>Vergleiche</a>
+            </div>
+          </app-toolbar>
+        </app-header>
+        <div class="des-body">
+          <iron-pages
+            selected="[[_routeData.page]]"
+            attr-for-selected="name"
+            fallback-selection="home">
+            <des-home-page name="home"></des-home-page>
+            <des-internet-page name="internet"></des-internet-page>
+            <des-hersteller-page name="hersteller"></des-hersteller-page>
+            <des-vergleiche-page name="vergleiche"></des-vergleiche-page>
+            <des-impressum-page name="impressum"></des-impressum-page>
+            <des-datenschutzerklaerung-page name="datenschutzerklaerung"></des-datenschutzerklaerung-page>
+            <des-tools-page name="tools"></des-tools-page>
+          </iron-pages>
         </div>
-      </paper-card>
-    </div>
+        <div class="des-footer">
+          <paper-card>
+            <div class="card-content">
+              <div class="footer-content">
+                Copyright © 2016 ·
+                <a href="/">das-elektro-skateboard.de</a> ·
+                <a href="/impressum">Impressum</a> ·
+                <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+              </div>
+            </div>
+          </paper-card>
+        </div>
+      </app-header-layout>
+    </app-drawer-layout>
   </template>
   <script>
     Polymer({
@@ -90,7 +138,18 @@
         },
         _route: {
           type: Object
+        },
+        _drawer: {
+          type: Object
         }
+      },
+
+      listeners: {
+        "iron-select": "_handleIronSelect"
+      },
+
+      _handleIronSelect: function() {
+        this.$.drawer.close();
       }
     });
   </script>
