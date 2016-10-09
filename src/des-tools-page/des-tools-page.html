@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/google-feeds/google-feeds.html">
+<link rel="import" href="../../bower_components/object-to-json/object-to-json.html">
+<link rel="import" href="../des-styles/des-styles.html">
+
+<dom-module id="des-tools-page">
+  <template>
+    <style include="des-styles"></style>
+    <google-feeds feed="[[_feedUrl]]"
+      results="{{_feedResult}}"></google-feeds>
+    <paper-card class="page-card"
+      heading="Tools">
+      <div class="card-content">
+        <paper-input
+          label="Url"
+          value="{{_feedUrl}}"></paper-input>
+      </div>
+      <div class="card-content">
+        <object-to-json object="[[_feedResult]]"></object-to-json>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+    Polymer({
+      is: "des-tools-page",
+      properties: {
+        _url: {
+          type: String,
+          observer: "_urlChanged"
+        }
+      }
+    });
+  </script>
+</dom-module>

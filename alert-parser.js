@@ -81,7 +81,6 @@ var parseGoogleAlertFeed = (feedUrl, callback) => {
         if (parsedLinks == articles.length) callback(data);
       });
     });
-
     console.log("READY");
   });
 }

@@ -3,17 +3,34 @@
 <link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/lazy-loading/lazy-loading.html">
 <link rel="import" href="../des-styles/des-styles.html">
 <link rel="import" href="../des-home-page/des-home-page.html">
+<link rel="import" href="../des-internet-page/des-internet-page.html">
+<link rel="import" href="../des-hersteller-page/des-hersteller-page.html">
+<link rel="import" href="../des-vergleiche-page/des-vergleiche-page.html">
 <link rel="import" href="../des-impressum-page/des-impressum-page.html">
 <link rel="import" href="../des-datenschutzerklaerung-page/des-datenschutzerklaerung-page.html">
+<link rel="import" href="../des-tools-page/des-tools-page.html">
 
 <link rel="import" href="des-env.html">
 
 <dom-module id="des-shell">
   <template>
-    <style include="des-styles"></style>
+    <style include="des-styles">
+      .footer-content {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      .footer-content a {
+        margin: 0 5px 0 5px;
+      }
+    </style>
     <google-analytics key="UA-11698599-3"></google-analytics>
     <firebase-app
       auth-domain="das-elektro-skateboard.firebaseapp.com"
@@ -25,22 +42,42 @@
       route="[[_route]]"
       pattern="/:page"
       data="{{_routeData}}"></app-route>
+    <div class="des-header">
+      <app-header>
+        <app-toolbar>
+          <div main-title>Das Elektro Skateboard</div>
+          <a href="/">Home</a>
+          <a href="/internet" spacer>Internet</a>
+          <a href="/hersteller" spacer>Hersteller</a>
+          <a href="/vergleiche" spacer>Vergleiche</a>
+        </app-toolbar>
+      </app-header>
+    </div>
     <div class="des-body">
       <iron-pages
         selected="[[_routeData.page]]"
         attr-for-selected="name"
         fallback-selection="home">
         <des-home-page name="home"></des-home-page>
+        <des-internet-page name="internet"></des-internet-page>
+        <des-hersteller-page name="hersteller"></des-hersteller-page>
+        <des-vergleiche-page name="vergleiche"></des-vergleiche-page>
         <des-impressum-page name="impressum"></des-impressum-page>
         <des-datenschutzerklaerung-page name="datenschutzerklaerung"></des-datenschutzerklaerung-page>
+        <des-tools-page name="tools"></des-tools-page>
       </iron-pages>
     </div>
     <div class="des-footer">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/impressum">Impressum</a></li>
-        <li><a href="/datenschutzerklaerung">Datenschutzerklärung</a></li>
-      </ul>
+      <paper-card>
+        <div class="card-content">
+          <div class="footer-content">
+            Copyright © 2016 ·
+            <a href="/">das-elektro-skateboard.de</a> ·
+            <a href="/impressum">Impressum</a> ·
+            <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+          </div>
+        </div>
+      </paper-card>
     </div>
   </template>
   <script>

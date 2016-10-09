@@ -3,11 +3,15 @@
   "shell": "src/des-shell/des-shell.html",
   "fragments": [
     "src/des-datenschutzerklaerung-page/des-datenschutzerklaerung-page.html",
+    "src/des-hersteller-page/des-hersteller-page.html",
     "src/des-home-page/des-home-page.html",
     "src/des-icons/des-icons.html",
     "src/des-impressum-page/des-impressum-page.html",
+    "src/des-internet-page/des-internet-page.html",
     "src/des-shell/des-env.html",
-    "src/des-styles/des-styles.html"
+    "src/des-styles/des-styles.html",
+    "src/des-tools-page/des-tools-page.html",
+    "src/des-vergleiche-page/des-vergleiche-page.html"
   ],
   "sourceGlobs": [
    "src/**/*",

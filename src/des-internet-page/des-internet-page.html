@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../des-styles/des-styles.html">
+<link rel="import" href="des-internet-grid.html">
+
+<dom-module id="des-internet-page">
+  <template>
+    <style include="des-styles"></style>
+    <!-- data -->
+
+    <paper-card class="page-card"
+      heading="Internet">
+      <div class="card-content">
+        <div class="body-1">
+          Das Internet ist eine erstaunliche, wenn nicht sogar die größte
+          Erfindung der Menschheit, nach dem Rad. Täglich werden bis zu
+          2 Millionen neue Webseiten erstellt und verbreitet. Da stellt sich
+          die Frage, wie finde ich aktuelle und relevante Informationen zu
+          bestimmten Themen wie die elektronische Mobilität mit dem Skateboard.
+        </div>
+      </div>
+      <div class="card-content">
+        <des-internet-grid>
+        </des-internet-grid>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+    Polymer({
+      is: "des-internet-page"
+    });
+  </script>
+</dom-module>
