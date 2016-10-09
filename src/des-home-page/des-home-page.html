@@ -1,132 +1,111 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/app-layout/app-grid/app-grid-style.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
-<link rel="import" href="../des-icons/des-icons.html">
+<link rel="import" href="../../bower_components/app-layout/app-box/app-box.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/effects/parallax-background.html">
+<link rel="import" href="../../bower_components/app-layout/demo/sample-content.html">
+
+<link rel="import" href="../des-styles/des-styles.html">
 
 <dom-module id="des-home-page">
   <template>
-    <style include="app-grid-style">
-      :host {
-        display: block;
+    <style include="des-styles">
 
-        --app-grid-columns: 3;
-        --app-grid-gutter: 5px;
-        --app-grid-item-height: 250px;
-        --app-grid-expandible-item-columns: 4;
+      app-box {
+        height: 100vh;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul {
-        padding: 0;
-        list-style: none;
-      }
-
-      paper-card {
-        width: 100%;
-        height: 250px;
-
-        --paper-card-header-text: {
-          font-size: 18px;
+      .willkommen {
+        --app-box-background-front-layer: {
+          background-image: url(../../images/home/willkommen.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
         };
       }
 
-      .content-wrapper {
-        margin: auto;
+      .internet {
+        --app-box-background-front-layer: {
+          background-image: url(../../images/home/internet.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        };
       }
 
-      @media (max-width: 480px) {
-        :host {
-          --app-grid-columns: 1;
-          --app-grid-gutter: 5px;
-          --app-grid-item-height: 250px;
-          --app-grid-expandible-item-columns: 1;
-        }
+      .hersteller {
+        --app-box-background-front-layer: {
+          background-image: url(../../images/home/hersteller.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        };
       }
 
-      @media (min-width: 480px) {
-        :host {
-          --app-grid-columns: 2;
-          --app-grid-gutter: 5px;
-          --app-grid-item-height: 250px;
-          --app-grid-expandible-item-columns: 2;
-        }
+      .vergleiche {
+        --app-box-background-front-layer: {
+          background-image: url(../../images/home/vergleiche.jpg);
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        };
       }
-
-      @media (min-width: 600px) {
-        :host {
-          --app-grid-columns: 2;
-          --app-grid-gutter: 5px;
-          --app-grid-item-height: 250px;
-          --app-grid-expandible-item-columns: 2;
-        }
-      }
-
-      @media (min-width: 840px) {
-        :host {
-          --app-grid-columns: 3;
-          --app-grid-gutter: 5px;
-          --app-grid-item-height: 250px;
-          --app-grid-expandible-item-columns: 3;
-        }
-      }
-
-      @media (min-width: 960px) {
-        :host {
-          --app-grid-columns: 3;
-          --app-grid-gutter: 5px;
-          --app-grid-item-height: 250px;
-          --app-grid-expandible-item-columns: 3;
-        }
-      }
-
-      @media (min-width: 1280px) { }
-
-      @media (min-width: 1440px) { }
-
-      @media (min-width: 1600px) { }
     </style>
-    <!-- data -->
-    <firebase-query
-      path="/feed"
-      data="{{_feedData}}"></firebase-query>
-    <ul class="app-grid">
-      <template is="dom-repeat" items="[[_feedData]]">
-        <li>
-          <paper-card
-            heading="[[item.title]]">
-            <div class="card-content">
-              [[item.content]]
-            </div>
-            <div class="card-actions">
-              <a href="[[item.link]]" tabindex="-1">
-                <paper-icon-button icon="launch"></paper-icon-button>
-              </a>
-            </div>
-          </paper-card>
-        </li>
-      </template>
-    </ul>
+    <section>
+      <article>
+        <hr />
+        <a href="/"><h2>Willkommen</h2></a>
+        <p>
+          <a href="/">https://das-elektro-skateboard.de</a> ist die Seite rund
+          ums Thema Elektromobilität mit dem Skateboard.
+        </p>
+      </article>
+      <a href="/">
+        <app-box class="willkommen" effects="parallax-background"></app-box>
+      </a>
+    </section>
+    <section>
+      <article>
+        <hr />
+        <a href="/internet"><h2>Internet</h2></a>
+        <p>
+          unter <a href="/internet">Internet</a> findest Du alle aktuelle
+          Beiträge aus dem Netzt. E-Bay Kleinanzeigen, Blog-Artikel,
+          Nachrichten, Bilder und Videos stehen hier für dich bereit.
+          Natürlich gefiltert und sortiert zu folgenden Themen: Elektro
+          Skateboards, Longboards, Hoverboards und Segways
+        </p>
+      </article>
+      <a href="/internet">
+        <app-box class="internet" effects="parallax-background"></app-box>
+      </a>
+    </section>
+    <section>
+      <article>
+        <hr />
+        <a href="/hersteller"><h2>Hersteller</h2></a>
+        <p></p>
+      </article>
+      <a href="/hersteller">
+        <app-box class="hersteller" effects="parallax-background"></app-box>
+      </a>
+    </section>
+    <section>
+      <article>
+        <hr />
+        <a href="/vergleiche"><h2>Vergleiche</h2></a>
+        <p></p>
+      </article>
+      <a href="/vergleiche">
+        <app-box class="vergleiche" effects="parallax-background"></app-box>
+      </a>
+    </section>
   </template>
   <script>
     Polymer({
-      is: "des-home-page",
-
-      attached: function() {
-        this._updateGridStyles = this._updateGridStyles || function() {
-          this.updateStyles();
-        }.bind(this);
-        window.addEventListener('resize', this._updateGridStyles);
-      },
-
-      detached: function() {
-        window.removeEventListener('resize', this._updateGridStyles);
-      }
+      is: "des-home-page"
     });
   </script>
 </dom-module>

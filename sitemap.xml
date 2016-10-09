@@ -3,9 +3,28 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
   <url>
     <loc>https://das-elektro-skateboard.de/</loc>
-    <lastmod>2016-10-03T17:16:29+00:00</lastmod>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://das-elektro-skateboard.de/impressum</loc>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://das-elektro-skateboard.de/datenschutzerklaerung</loc>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://das-elektro-skateboard.de/internet</loc>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://das-elektro-skateboard.de/hersteller</loc>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://das-elektro-skateboard.de/vergleiche</loc>
+    <lastmod>2016-10-09T21:33:00+00:00</lastmod>
   </url>
 </urlset>
